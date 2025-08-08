@@ -4,263 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Las Delicias de Rosita</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-radius: 20px;
-            overflow: hidden;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        .header {
-            background: linear-gradient(45deg, #ff6b9d, #c44569);
-            color: white;
-            padding: 30px;
-            text-align: center;
-            position: relative;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
-        }
-
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .logo {
-            width: 80px;
-            height: 80px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2em;
-            position: relative;
-            z-index: 1;
-        }
-
-        .nav {
-            background: #ffc0cb;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .nav-btn {
-            background: none;
-            border: none;
-            padding: 15px 25px;
-            cursor: pointer;
-            font-weight: bold;
-            color: #333;
-            transition: all 0.3s ease;
-            border-radius: 0;
-        }
-
-        .nav-btn:hover, .nav-btn.active {
-            background: #ff9acd;
-            color: white;
-        }
-
-        .content {
-            padding: 40px;
-            min-height: 400px;
-        }
-
-        .section {
-            display: none;
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .about-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            color: #ff6b9d;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-
-        .about-text p {
-            font-size: 1.1em;
-            line-height: 1.6;
-            color: #333;
-            margin-bottom: 15px;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .product-card h3 {
-            color: #ff6b9d;
-            margin-bottom: 15px;
-            font-size: 1.5em;
-        }
-
-        .opinion-form {
-            background: linear-gradient(135deg, #ffeef5, #f0f0f0);
-            padding: 40px;
-            border-radius: 20px;
-            margin-top: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ffc0cb;
-            border-radius: 10px;
-            font-size: 1em;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: #ff6b9d;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .btn-enviar {
-            background: linear-gradient(45deg, #ff6b9d, #c44569);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 25px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: block;
-            margin: 0 auto;
-        }
-
-        .btn-enviar:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255,107,157,0.4);
-        }
-
-        .mission-vision {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 30px;
-        }
-
-        .mission, .vision {
-            background: linear-gradient(135deg, #ffeef5, #f0f0f0);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-        }
-
-        .mission h3, .vision h3 {
-            color: #ff6b9d;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-        }
-
-        .chef-icon {
-            font-size: 4em;
-            margin-bottom: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .about-section, .mission-vision {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .nav {
-                flex-direction: column;
-            }
-            
-            .nav-btn {
-                padding: 10px 15px;
-            }
-            
-            .content {
-                padding: 20px;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -270,77 +14,406 @@
         </header>
 
         <nav class="nav">
-            <button class="nav-btn active" onclick="showSection('inicio')">Inicio</button>
-            <button class="nav-btn" onclick="showSection('especialidades')">ESPECIALIDADES</button>
-            <button class="nav-btn" onclick="showSection('productos')">PRODUCTOS</button>
-            <button class="nav-btn" onclick="showSection('opiniones')">OPINIONES</button>
+            <button class="nav-btn active" onclick="showSection('inicio')">🏠 Inicio</button>
+            <button class="nav-btn" onclick="showSection('especialidades')">⭐ Especialidades</button>
+            <button class="nav-btn" onclick="showSection('productos')">🛍️ Productos</button>
+            <button class="nav-btn" onclick="showSection('galeria')">📸 Galería</button>
+            <button class="nav-btn" onclick="showSection('nosotros')">👥 Nosotros</button>
+            <button class="nav-btn" onclick="showSection('contacto')">📞 Contacto</button>
+            <button class="nav-btn" onclick="showSection('opiniones')">💬 Opiniones</button>
         </nav>
 
         <main class="content">
             <!-- Sección Inicio -->
             <section id="inicio" class="section active">
-                <div class="about-section">
-                    <div class="about-text">
-                        <h2>¿Quiénes somos?</h2>
-                        <p><strong>Las Delicias De Rosita</strong></p>
-                        <p>Somos una cafetería que tiene como especialidad los postres: merengones y obleas.</p>
-                        <div style="background: #ffc0cb; padding: 15px; border-radius: 10px; margin-top: 20px;">
-                            <strong style="color: #333;">La delicia de rosita</strong>
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h2 class="hero-title">¡Bienvenidos a las Delicias de Rosita! 🌟</h2>
+                        <p class="hero-subtitle">Donde cada dulce momento se convierte en un recuerdo especial</p>
+                        <div class="hero-image-placeholder">
+                            <div class="image-placeholder">
+                                📷 Foto Principal del Negocio
+                            </div>
                         </div>
                     </div>
-                    <div class="chef-icon">👩‍🍳</div>
                 </div>
 
-                <div class="mission-vision">
-                    <div class="mission">
-                        <h3>Misión</h3>
-                        <p>Deleitar a nuestros clientes con productos de alta calidad elaborados con ingredientes frescos y recetas tradicionales, brindando una experiencia única que supere sus expectativas, fortaleciendo los momentos y creando recuerdos memorables.</p>
+                <div class="intro-cards">
+                    <div class="intro-card">
+                        <div class="card-icon">🧁</div>
+                        <h3>Postres Artesanales</h3>
+                        <p>Elaborados con amor y los mejores ingredientes</p>
                     </div>
-                    <div class="vision">
-                        <h3>Visión</h3>
-                        <p>Ser la cafetería líder en la región, reconocida por la excelencia de nuestros productos, la calidad de nuestro servicio y la calidez de nuestro ambiente, expandiendo nuestra oferta de postres y bebidas innovadoras, manteniendo siempre la esencia y sabor únicos que nos distinguen.</p>
+                    <div class="intro-card">
+                        <div class="card-icon">👩‍🍳</div>
+                        <h3>Recetas Tradicionales</h3>
+                        <p>Secretos familiares pasados de generación en generación</p>
                     </div>
+                    <div class="intro-card">
+                        <div class="card-icon">❤️</div>
+                        <h3>Hecho con Amor</h3>
+                        <p>Cada producto lleva el cariño de nuestras manos</p>
+                    </div>
+                </div>
+
+                <div class="about-preview">
+                    <h3>¿Quiénes Somos?</h3>
+                    <p><strong>Las Delicias De Rosita</strong> es una cafetería familiar especializada en postres tradicionales como merengones y obleas. Con años de experiencia, nos hemos convertido en el lugar favorito para quienes buscan sabores auténticos y momentos dulces.</p>
                 </div>
             </section>
 
             <!-- Sección Especialidades -->
             <section id="especialidades" class="section">
-                <h2 style="text-align: center; color: #ff6b9d; font-size: 2.5em; margin-bottom: 30px;">Nuestras Especialidades</h2>
-                <div class="product-grid">
-                    <div class="product-card">
-                        <h3>🍰 Merengones</h3>
-                        <p>Deliciosos merengones caseros con el toque especial de la casa. Perfectos para cualquier ocasión.</p>
+                <div class="section-header">
+                    <h2>⭐ Nuestras Especialidades</h2>
+                    <p>Los sabores que nos han hecho famosos</p>
+                </div>
+                
+                <div class="specialty-showcase">
+                    <div class="specialty-item featured">
+                        <div class="specialty-image">
+                            <div class="image-placeholder">
+                                📷 Foto de Merengones
+                            </div>
+                        </div>
+                        <div class="specialty-content">
+                            <h3>🍰 Merengones Especiales</h3>
+                            <p>Nuestros famosos merengones caseros, elaborados con la receta secreta de la familia. Suaves, esponjosos y con ese toque especial que solo Rosita sabe darle.</p>
+                            <div class="specialty-features">
+                                <span class="feature">✨ Receta Original</span>
+                                <span class="feature">🥚 Ingredientes Frescos</span>
+                                <span class="feature">❤️ Hecho a Mano</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-card">
-                        <h3>🥧 Obleas</h3>
-                        <p>Obleas tradicionales preparadas con ingredientes frescos y la receta familiar de generaciones.</p>
+
+                    <div class="specialty-item">
+                        <div class="specialty-image">
+                            <div class="image-placeholder">
+                                📷 Foto de Obleas
+                            </div>
+                        </div>
+                        <div class="specialty-content">
+                            <h3>🥧 Obleas Tradicionales</h3>
+                            <p>Obleas crujientes rellenas con los sabores más deliciosos: arequipe, mermelada, queso y miel. Una tradición que pasa de generación en generación.</p>
+                            <div class="specialty-features">
+                                <span class="feature">🍯 Variedad de Sabores</span>
+                                <span class="feature">🧀 Rellenos Premium</span>
+                                <span class="feature">🔥 Recién Hechas</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-card">
-                        <h3>☕ Café Especial</h3>
-                        <p>Café de alta calidad para acompañar perfectamente nuestros postres artesanales.</p>
+                </div>
+
+                <div class="specialty-grid">
+                    <div class="specialty-card">
+                        <div class="card-image">
+                            <div class="image-placeholder small">📷 Café</div>
+                        </div>
+                        <h4>☕ Café Premium</h4>
+                        <p>Café colombiano de alta calidad para acompañar perfectamente nuestros dulces.</p>
+                    </div>
+                    <div class="specialty-card">
+                        <div class="card-image">
+                            <div class="image-placeholder small">📷 Chocolate</div>
+                        </div>
+                        <h4>🍫 Chocolate Caliente</h4>
+                        <p>Cremoso chocolate caliente preparado con cacao puro y amor.</p>
+                    </div>
+                    <div class="specialty-card">
+                        <div class="card-image">
+                            <div class="image-placeholder small">📷 Bebidas</div>
+                        </div>
+                        <h4>🥤 Bebidas Artesanales</h4>
+                        <p>Jugos naturales y bebidas refrescantes preparadas al momento.</p>
                     </div>
                 </div>
             </section>
 
             <!-- Sección Productos -->
             <section id="productos" class="section">
-                <h2 style="text-align: center; color: #ff6b9d; font-size: 2.5em; margin-bottom: 30px;">Nuestros Productos</h2>
-                <div class="product-grid">
-                    <div class="product-card">
-                        <h3>🍰 Postres Artesanales</h3>
-                        <p>Variedad de postres hechos con amor y los mejores ingredientes.</p>
+                <div class="section-header">
+                    <h2>🛍️ Nuestros Productos</h2>
+                    <p>Una variedad deliciosa para cada ocasión</p>
+                </div>
+                <div class="products-container">
+                    <div class="product-category">
+                        <h3>🍰 Postres y Dulces</h3>
+                        <div class="product-grid">
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <div class="image-placeholder">📷 Tortas</div>
+                                </div>
+                                <h4>🎂 Tortas Personalizadas</h4>
+                                <p>Tortas hechas a medida para tus celebraciones especiales</p>
+                                <div class="product-price">Desde $25.000</div>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <div class="image-placeholder">📷 Cupcakes</div>
+                                </div>
+                                <h4>🧁 Cupcakes Decorados</h4>
+                                <p>Perfectos para fiestas y eventos, con decoraciones únicas</p>
+                                <div class="product-price">$3.500 c/u</div>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <div class="image-placeholder">📷 Galletas</div>
+                                </div>
+                                <h4>🍪 Galletas Artesanales</h4>
+                                <p>Crujientes galletas con sabores tradicionales y modernos</p>
+                                <div class="product-price">$2.000 c/u</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-card">
-                        <h3>🧁 Cupcakes</h3>
-                        <p>Cupcakes decorados perfectos para celebraciones especiales.</p>
+
+                    <div class="product-category">
+                        <h3>☕ Bebidas y Acompañantes</h3>
+                        <div class="product-grid">
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <div class="image-placeholder">📷 Café</div>
+                                </div>
+                                <h4>☕ Café Gourmet</h4>
+                                <p>Café colombiano premium en diferentes preparaciones</p>
+                                <div class="product-price">$4.000 - $8.000</div>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <div class="image-placeholder">📷 Jugos</div>
+                                </div>
+                                <h4>🥤 Jugos Naturales</h4>
+                                <p>Jugos frescos de frutas de temporada</p>
+                                <div class="product-price">$5.000 - $7.000</div>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <div class="image-placeholder">📷 Batidos</div>
+                                </div>
+                                <h4>🥛 Batidos Especiales</h4>
+                                <p>Cremosos batidos con frutas y complementos</p>
+                                <div class="product-price">$8.000 - $12.000</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-card">
-                        <h3>🍪 Galletas</h3>
-                        <p>Galletas caseras con diferentes sabores y decoraciones.</p>
+                </div>
+            </section>
+
+            <!-- Sección Galería -->
+            <section id="galeria" class="section">
+                <div class="section-header">
+                    <h2>📸 Galería</h2>
+                    <p>Momentos dulces capturados en imágenes</p>
+                </div>
+                
+                <div class="gallery-tabs">
+                    <button class="tab-btn active" onclick="showGalleryTab('productos-fotos')">Productos</button>
+                    <button class="tab-btn" onclick="showGalleryTab('local-fotos')">Nuestro Local</button>
+                    <button class="tab-btn" onclick="showGalleryTab('eventos-fotos')">Eventos</button>
+                </div>
+
+                <div class="gallery-container">
+                    <div id="productos-fotos" class="gallery-tab active">
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <div class="image-placeholder gallery">📷 Merengones Variados</div>
+                                <p>Diferentes sabores de merengones</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="image-placeholder gallery">📷 Obleas Recién Hechas</div>
+                                <p>Obleas con rellenos especiales</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="image-placeholder gallery">📷 Torta de Cumpleaños</div>
+                                <p>Torta personalizada para celebración</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="image-placeholder gallery">📷 Mesa de Postres</div>
+                                <p>Variedad completa de productos</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="image-placeholder gallery">📷 Cupcakes Temáticos</div>
+                                <p>Cupcakes decorados para evento</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="image-placeholder gallery">📷 Proceso de Elaboración</div>
+                                <p>Rosita preparando merengones</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-card">
-                        <h3>🥤 Bebidas</h3>
-                        <p>Café, té, chocolate caliente y bebidas refrescantes.</p>
+
+                    <div id="local-fotos" class="gallery-tab">
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <div class="image-placeholder gallery">📷 Fachada del Local</div>
+                                <p>Vista exterior de la cafetería</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="image-placeholder gallery">📷 Interior Acogedor</div>
+                                <p>Ambiente cálido y familiar</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="image-placeholder gallery">📷 Cocina Principal</div>
+                                <p>Donde se crean las delicias</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="image-placeholder gallery">📷 Vitrina de Productos</div>
+                                <p>Exhibición de nuestros postres</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="eventos-fotos" class="gallery-tab">
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <div class="image-placeholder gallery">📷 Boda Especial</div>
+                                <p>Mesa de postres para boda</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="image-placeholder gallery">📷 Cumpleaños Infantil</div>
+                                <p>Celebración con nuestros productos</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="image-placeholder gallery">📷 Graduación</div>
+                                <p>Torta personalizada de graduación</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="image-placeholder gallery">📷 Evento Corporativo</div>
+                                <p>Catering para empresa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Nosotros -->
+            <section id="nosotros" class="section">
+                <div class="section-header">
+                    <h2>👥 Conoce Nuestra Historia</h2>
+                    <p>La pasión detrás de cada dulce momento</p>
+                </div>
+
+                <div class="story-section">
+                    <div class="story-content">
+                        <div class="story-text">
+                            <h3>La Historia de Rosita</h3>
+                            <p>Todo comenzó hace más de 10 años cuando Rosita decidió compartir con el mundo las recetas que había perfeccionado durante generaciones en su familia. Con solo una pequeña cocina y mucho amor, comenzó a crear los merengones y obleas que hoy nos caracterizan.</p>
+                            <p>Con el tiempo, lo que empezó como un emprendimiento familiar se convirtió en el punto de encuentro favorito de la comunidad, donde cada cliente se siente como en casa y cada producto se elabora con el mismo cariño de siempre.</p>
+                        </div>
+                        <div class="story-image">
+                            <div class="image-placeholder">📷 Foto de Rosita</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mission-vision">
+                    <div class="mission">
+                        <div class="mv-icon">🎯</div>
+                        <h3>Nuestra Misión</h3>
+                        <p>Deleitar a nuestros clientes con productos de alta calidad elaborados con ingredientes frescos y recetas tradicionales, brindando una experiencia única que supere sus expectativas, fortaleciendo los momentos especiales y creando recuerdos memorables en cada visita.</p>
+                    </div>
+                    <div class="vision">
+                        <div class="mv-icon">👁️</div>
+                        <h3>Nuestra Visión</h3>
+                        <p>Ser la cafetería líder en la región, reconocida por la excelencia de nuestros productos, la calidad de nuestro servicio y la calidez de nuestro ambiente. Expandir nuestra oferta con postres y bebidas innovadoras, manteniendo siempre la esencia y sabor únicos que nos distinguen.</p>
+                    </div>
+                </div>
+
+                <div class="values-section">
+                    <h3>Nuestros Valores</h3>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <div class="value-icon">❤️</div>
+                            <h4>Amor y Pasión</h4>
+                            <p>Cada producto se elabora con amor y dedicación</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">🏆</div>
+                            <h4>Calidad</h4>
+                            <p>Solo utilizamos los mejores ingredientes</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">👨‍👩‍👧‍👦</div>
+                            <h4>Familia</h4>
+                            <p>Tratamos a cada cliente como familia</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">🌱</div>
+                            <h4>Tradición</h4>
+                            <p>Preservamos las recetas familiares</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Contacto -->
+            <section id="contacto" class="section">
+                <div class="section-header">
+                    <h2>📞 Contáctanos</h2>
+                    <p>Estamos aquí para endulzar tu día</p>
+                </div>
+
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-details">
+                                <h4>Dirección</h4>
+                                <p>Calle Principal #123<br>Iza, Boyaca</p>
+                                <div class="image-placeholder contact">📷 Mapa de Ubicación</div>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-details">
+                                <h4>Teléfonos</h4>
+                                <p><strong>WhatsApp:</strong> +57 320 340 2628</p>
+                                <p><strong>Fijo:</strong> (1) 123 4567</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">⏰</div>
+                            <div class="contact-details">
+                                <h4>Horarios de Atención</h4>
+                                <p><strong>Lunes a Viernes:</strong> 7:00 AM - 7:00 PM</p>
+                                <p><strong>Sábados:</strong> 8:00 AM - 8:00 PM</p>
+                                <p><strong>Domingos:</strong> 9:00 AM - 5:00 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h4>Redes Sociales</h4>
+                                <p>📘 Facebook: Las Delicias de Rosita</p>
+                                <p>📷 Instagram: @deliciasderosita</p>
+                                <p>📧 Email: info@deliciasderosita.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quick-contact">
+                        <h3>Contacto Rápido</h3>
+                        <div class="quick-buttons">
+                            <a href="https://wa.me/573203402628" class="contact-btn whatsapp" target="_blank">
+                                📱 WhatsApp
+                            </a>
+                            <a href="tel:+573203402628" class="contact-btn phone">
+                                📞 Llamar
+                            </a>
+                            <a href="#" class="contact-btn facebook" target="_blank">
+                                📘 Facebook
+                            </a>
+                            <a href="#" class="contact-btn instagram" target="_blank">
+                                📷 Instagram
+                            </a>
+                        </div>
+                        
+                        <div class="location-image">
+                            <div class="image-placeholder">📷 Foto del Local</div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -369,67 +442,6 @@
         </main>
     </div>
 
-    <script>
-        // Función para mostrar secciones
-        function showSection(sectionName) {
-            // Ocultar todas las secciones
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Mostrar la sección seleccionada
-            document.getElementById(sectionName).classList.add('active');
-            
-            // Actualizar botones de navegación
-            const navBtns = document.querySelectorAll('.nav-btn');
-            navBtns.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-        }
-
-        // Manejar el envío del formulario
-        document.getElementById('opinionForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const nombre = document.getElementById('nombre').value;
-            const telefono = document.getElementById('telefono').value;
-            const opinion = document.getElementById('opinion').value;
-            
-            // Número de WhatsApp del negocio
-            const numeroWhatsApp = '573203402628';
-            
-            // Crear el mensaje
-            const mensaje = `¡Hola! Soy ${nombre}
-            
-Mi número de teléfono es: ${telefono}
-
-Mi opinión sobre Las Delicias de Rosita:
-${opinion}
-
-¡Gracias por sus deliciosos productos! 🧁✨`;
-            
-            // Codificar el mensaje para URL
-            const mensajeCodificado = encodeURIComponent(mensaje);
-            
-            // Crear la URL de WhatsApp
-            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;
-            
-            // Abrir WhatsApp
-            window.open(urlWhatsApp, '_blank');
-            
-            // Limpiar el formulario
-            document.getElementById('opinionForm').reset();
-            
-            // Mostrar mensaje de confirmación
-            alert('¡Gracias por tu opinión! Te estamos redirigiendo a WhatsApp.');
-        });
-
-        // Animación de entrada
-        window.addEventListener('load', function() {
-            document.querySelector('.container').style.animation = 'fadeIn 1s ease-in';
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
