@@ -1933,4 +1933,35 @@ body {
     background: #ccc;
     border-radius: 4px;
 }
->>>>>>> 3d0e5cb (Se agregan imagenes)
+
+.hero-gallery {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px 0;
+    scroll-snap-type: x mandatory;
+}
+
+.hero-gallery img {
+    height: 300px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    object-fit: cover;
+    scroll-snap-align: start;
+    transition: transform 0.3s;
+}
+
+.hero-gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* Opcional: Estiliza la barra de scroll */
+.hero-gallery::-webkit-scrollbar {
+    height: 8px;
+}
+
+.hero-gallery::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
