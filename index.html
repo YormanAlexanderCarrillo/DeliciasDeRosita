@@ -16,14 +16,21 @@
         </header>
 
         <nav class="nav">
-            <button class="nav-btn active" onclick="showSection('inicio')">🏠 Inicio</button>
-            <button class="nav-btn" onclick="showSection('especialidades')">⭐ Especialidades</button>
-            <button class="nav-btn" onclick="showSection('productos')">🛍️ Productos</button>
-            <button class="nav-btn" onclick="showSection('galeria')">📸 Galería</button>
-            <button class="nav-btn" onclick="showSection('nosotros')">👥 Nosotros</button>
-            <button class="nav-btn" onclick="showSection('contacto')">📞 Contacto</button>
-            <button class="nav-btn" onclick="showSection('opiniones')">💬 Opiniones</button>
+            <div class="nav-container">
+                <button class="nav-toggle" id="navToggle">☰</button>
+                <div class="nav-menu" id="navMenu">
+                    <button class="nav-btn active" onclick="showSection('inicio')">🏠 Inicio</button>
+                    <button class="nav-btn" onclick="showSection('especialidades')">⭐ Especialidades</button>
+                    <button class="nav-btn" onclick="showSection('productos')">🛍️ Productos</button>
+                    <button class="nav-btn" onclick="showSection('galeria')">📸 Galería</button>
+                    <button class="nav-btn" onclick="showSection('nosotros')">👥 Nosotros</button>
+                    <button class="nav-btn" onclick="showSection('contacto')">📞 Contacto</button>
+                    <button class="nav-btn" onclick="showSection('opiniones')">💬 Opiniones</button>
+                </div>
+            </div>
         </nav>
+
+
 
         <main class="content">
             <!-- Sección Inicio -->
@@ -77,7 +84,7 @@
                     <div class="specialty-item featured">
                         <div class="specialty-image">
                             <div class="hero-gallery">
-                               <img src="/imagenes/Merengones.jpg" alt="Producto 1">
+                                <img src="/imagenes/Merengones.jpg" alt="Producto 1">
                             </div>
                         </div>
                         <div class="specialty-content">
