@@ -223,3 +223,15 @@ ${opinion}
 window.addEventListener('load', function () {
     document.querySelector('.container').style.animation = 'fadeIn 1s ease-in';
 });
+
+function toggleText(id) {
+    const text = document.getElementById(id);
+    const btn = text.previousElementSibling;
+    if (text.style.display === 'block') {
+      text.style.display = 'none';
+      btn.textContent = btn.textContent.replace('Ocultar', 'Mostrar');
+    } else {
+      text.style.display = 'block';
+      btn.textContent = btn.textContent.replace('Mostrar', 'Ocultar');
+    }
+  }

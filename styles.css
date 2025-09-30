@@ -631,38 +631,61 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     margin: 50px 0;
-}
+  }
 
-.mission, .vision {
+  .mission, .vision {
     background: rgba(255,255,255,0.9);
-    padding: 40px;
+    padding: 20px;
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
-}
+  }
 
-.mission:hover, .vision:hover {
+  .mission:hover, .vision:hover {
     transform: translateY(-8px);
-}
+  }
 
-.mv-icon {
+  .mv-icon {
     font-size: 3em;
-    margin-bottom: 20px;
-}
+    margin-bottom: 10px;
+  }
 
-.mission h3, .vision h3 {
+  .mission h3, .vision h3 {
     color: #ff6b9d;
     font-size: 2em;
     margin-bottom: 20px;
     font-weight: 700;
-}
+  }
 
-.mission p, .vision p {
+  .mission p, .vision p {
     font-size: 1.1em;
     color: #555;
     text-align: justify;
-}
+    margin-top: 10px;
+  }
+
+  /* Ocultamos el texto inicialmente */
+  .content-text {
+    display: none;
+  }
+
+  /* Estilo para botones */
+  .toggle-btn {
+    background-color: #ff6b9d;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+
+  .toggle-btn:hover {
+    background-color: #e05b86;
+  }
 
 /* Values Section */
 .values-section {
@@ -716,107 +739,164 @@ body {
 
 /* Contact Section */
 .contact-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 50px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 50px;
 }
 
-.contact-info {
-    display: grid;
+/* Responsive: en pantallas pequeñas apilamos en una columna */
+@media (max-width: 900px) {
+  .contact-container {
+    grid-template-columns: 1fr;
     gap: 30px;
+  }
 }
 
+/* Flexbox para cada contact-item */
 .contact-item {
-    display: flex;
-    align-items: flex-start;
-    background: rgba(255,255,255,0.9);
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+  display: flex;
+  align-items: flex-start;
+  background: rgba(255,255,255,0.9);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  flex-wrap: wrap;
 }
 
 .contact-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(255,107,157,0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(255,107,157,0.2);
 }
 
 .contact-icon {
-    font-size: 2.5em;
-    margin-right: 25px;
-    color: #ff6b9d;
+  font-size: 2.5em;
+  margin-right: 25px;
+  color: #ff6b9d;
+  flex-shrink: 0;
+}
+
+/* Que el texto pueda ocupar el resto del espacio */
+.contact-details {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .contact-details h4 {
-    font-size: 1.6em;
-    color: #ff6b9d;
-    margin-bottom: 15px;
-    font-weight: 600;
+  font-size: 1.6em;
+  color: #ff6b9d;
+  margin-bottom: 15px;
+  font-weight: 600;
 }
 
 .contact-details p {
-    color: #555;
-    font-size: 1.1em;
-    margin-bottom: 8px;
+  color: #555;
+  font-size: 1.1em;
+  margin-bottom: 8px;
 }
 
+/* Hacemos que el iframe sea responsivo */
+.contact-details iframe {
+  width: 100% !important;
+  max-width: 350px;
+  height: 250px;
+  border: 0;
+  border-radius: 15px;
+  margin-top: 15px;
+}
+
+/* Quick contact */
 .quick-contact {
-    background: linear-gradient(135deg, #fff5f8, #ffeef5);
-    padding: 40px;
-    border-radius: 25px;
-    text-align: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, #fff5f8, #ffeef5);
+  padding: 40px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
 .quick-contact h3 {
-    font-size: 2em;
-    color: #ff6b9d;
-    margin-bottom: 30px;
-    font-weight: 700;
+  font-size: 2em;
+  color: #ff6b9d;
+  margin-bottom: 30px;
+  font-weight: 700;
 }
 
 .quick-buttons {
-    display: grid;
-    gap: 15px;
-    margin-bottom: 30px;
+  display: grid;
+  gap: 15px;
+  margin-bottom: 30px;
 }
 
 .contact-btn {
-    display: block;
-    padding: 15px 25px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1em;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
+  display: block;
+  padding: 15px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1em;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
 
 .contact-btn.whatsapp {
-    background: linear-gradient(135deg, #25d366, #128c7e);
-    color: white;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: white;
 }
 
 .contact-btn.phone {
-    background: linear-gradient(135deg, #ff6b9d, #e91e63);
-    color: white;
+  background: linear-gradient(135deg, #ff6b9d, #e91e63);
+  color: white;
 }
 
 .contact-btn.facebook {
-    background: linear-gradient(135deg, #4267b2, #365899);
-    color: white;
+  background: linear-gradient(135deg, #4267b2, #365899);
+  color: white;
 }
 
 .contact-btn.instagram {
-    background: linear-gradient(135deg, #e4405f, #c13584);
-    color: white;
+  background: linear-gradient(135deg, #e4405f, #c13584);
+  color: white;
 }
 
 .contact-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    border-color: rgba(255,255,255,0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  border-color: rgba(255,255,255,0.3);
 }
+
+/* Hacemos que la galería sea responsiva */
+.hero-gallery img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+/* En pantallas pequeñas centramos todo y ajustamos padding */
+@media (max-width: 480px) {
+  .contact-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-icon {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .contact-details h4 {
+    font-size: 1.4em;
+  }
+
+  .quick-contact {
+    padding: 20px;
+  }
+
+  .quick-buttons {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 
 /* Opinion Form */
 .opinion-form {
